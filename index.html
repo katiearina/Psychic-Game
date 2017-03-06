@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Psychic Game!</title>
+
+    <!-- Viewport tag for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Font Awesome Link! -->
+    <script src="https://use.fontawesome.com/0a2ce55563.js"></script>
+
+    <!-- My Stylesheet! -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+</head>
+
+<body>
+
+<div id="wrap">
+
+    <!-- Start First Row -->
+    <div class="row">
+
+         <!-- Intentionally Blank Column -->
+<!--         <div class="col-lg-1 col-md-1 col-sm-1">
+        </div> -->
+
+        <!-- Top Content Container -->
+        <div class="col-lg-12 col-md-12 col-sm-12 top-content">
+            <h1>Psychic Game!</h1>
+        </div>
+
+         <!-- Intentionally Blank Column -->
+<!--         <div class="col-lg-1 col-md-1 col-sm-1">
+        </div> -->
+
+    <!-- End First Row -->
+    </div>
+
+    <!-- Start Second Row -->
+    <div class="row">
+
+        <!-- Intentionally Blank Column -->
+        <div class="col-lg-1 col-md-1 col-sm-1">
+        </div>
+
+        <!-- Main Psychic Content Container -->
+        <div class="col-lg-7 col-md-7 col-sm-7 main-psychic-content">
+
+        <!-- Current Letter Guessed -->
+        <p id="current-guess">
+			<!-- Input from JS only -->
+        </p>
+
+        <!-- Current Win Count -->
+        <p id="win-count">
+            <!-- Input from JS only -->
+        </p>
+
+        <!-- Current Loss Count -->
+        <p id="loss-count">
+            <!-- Input from JS only -->
+        </p>
+
+        <!-- Current Guesses Remaining -->
+        <p id="guess-count">
+            <!-- Input from JS only -->
+        </p>
+
+        <!-- Quote from current book -->
+        <blockquote class="blockquote-reverse" id="psychic-quote">
+            <!-- <footer class="blockquote-footer" id="psychic-quote-source">Shah Wharton, <cite title="Source Title">Finding Esta: #1 The Supes Series</cite></footer> -->
+        </blockquote>
+        
+        </div>
+
+        <!-- Intentionally Blank Column -->
+        <div class="col-lg-1 col-md-1 col-sm-1">
+        </div>
+
+        <!-- Right Side Section Container -->
+        <div class="col-lg-2 col-md-2 col-sm-2 right-content" id="previous-guess">
+
+            <!-- Subrow 1 -->
+            <div class="row">
+
+                <!-- Header Row for Right Column -->
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h4>Letters Guessed</h4>
+                </div>
+
+            <!-- Subrow 2 -->
+            <div class="row">
+            
+                <!-- Columns for guessed letters -->
+                <div class="col-lg-12 col-md-12 col-sm-12" id="letters-guessed">
+                    <!-- Input from JS only -->
+                </div>
+        
+            <!-- End Subrow 2 -->
+            </div>
+
+            <!-- End Subrow 1 -->
+            </div>
+
+        <!-- End Right Side Section Container -->
+        </div>
+
+        <!-- Intentionally Blank Column -->
+        <div class="col-lg-1 col-md-1 col-sm-1">
+        </div>
+
+    <!-- End Second Row -->
+    </div>
+
+    <!-- Start Third Row -->
+    <div class="row">
+
+        <!-- Intentionally Blank Column -->
+        <div class="col-lg-1 col-md-1 col-sm-1">
+        </div>
+
+        <!-- Bottom Content Container -->
+        <div class="col-lg-10 col-md-10 col-sm-10 bottom-content">
+            <!-- Status of Game -->
+
+            <!-- Start Subrow 1 -->
+            <div class="row">
+
+        <!-- Start Left Subcolumn -->
+        <div class="col-lg-5 col-md-5 col-sm-5">
+            <div id ="button-start">
+                <button type="button" onclick="gameStart()" class="btn btn-warning">Start Over!</button>
+            </div>
+
+        <!-- End Left Subcolumn -->
+        </div>
+
+        <!-- Start Right Subcolumn -->
+        <div class="col-lg-5 col-md-5 col-sm-5">
+            <div id ="button-play">
+<!--                 <button type="button" onclick="resetGame()" class="btn btn-default">Play Again!</button> -->
+            </div>
+        </div>
+
+        <!-- End Right Subcolumn -->
+        </div>
+        
+        <!-- End Subrow 1 -->
+        </div>
+
+        <!-- End Bottom Content Container -->
+        </div>
+
+        <!-- Intentionally Blank Column -->
+        <div class="col-lg-1 col-md-1 col-sm-1">
+        </div>
+
+    <!-- End Third Row -->
+    </div>
+
+</div>
+
+<footer id="footer">
+    <p class="p-footer-main">
+        Psychic Game &mdash; &copy; Katie Geckle 2017.
+    </p>
+</footer>
+
+</body>
+
+<script src="./assets/javascript/game.js"></script>
+
+</html>
