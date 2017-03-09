@@ -105,3 +105,9 @@ h4 {
 	background-color: lightsalmon;
 	color: red;
 }
+
+/* Styling for game prompt text */
+#game-prompt {
+	text-align: center;
+	font-weight: bold;
+}

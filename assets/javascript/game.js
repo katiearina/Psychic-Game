@@ -22,6 +22,11 @@ var guessesLeft = 9;
 // Variable to write remaining guess count to page
 var writeGuessesLeft = document.getElementById("guess-count");
 
+// Variable to write game prompt to page
+var writeGamePrompt = document.getElementById("game-prompt");
+// Variable to remove game prompt from page
+var clearGamePrompt = document.getElementById("game-prompt");
+
 // Variable to write loss quote to page
 var writeLossQuote = document.getElementById("psychic-quote");
 var lossQuote = "&#8220;The ego of a god, the wit of a goldfish.&#8221;";
@@ -84,6 +89,16 @@ function writeNewLossCount () {
 	writeLosses.innerHTML = "<h2>Losses: " + losses + "</h2>";
 }
 
+// This function writes game description to page
+function writePrompt () {
+	writeGamePrompt.textContent = "Guess What Letter I'm Thinking Of!";
+}
+
+// This function clears game description upon user guess
+function clearPrompt () {
+	clearGamePrompt.textContent = " ";
+}
+
 // This function shows a loss quote after player loses (this quote will
 // stick around until they win or reset the game)
 function showLossQuote () {
@@ -112,6 +127,7 @@ function gameStart () {
 	showResetQuote();
 	computerGuess();
 	resetGuessedLetters();
+	writePrompt();
 	// Console logs computer letter choice for testing
 	console.log(currentLetter);
 }
@@ -121,6 +137,7 @@ function gameStart () {
 function resetGame() {
 	guessesAtStart();
 	computerGuess();
+	writePrompt();
 	// Console logs computer letter choice for testing
 	console.log(currentLetter);
 	userGuesses = [];
@@ -146,6 +163,7 @@ document.onkeyup = function() {
 	writeGuessedLetters();
 	// Console logs guess array for testing
 	console.log(userGuesses);
+	clearPrompt();
 
 	// If there are still guesses left and player guesses correct letter,
 	// player wins and guess count resets to 9.
