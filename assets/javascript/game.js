@@ -18,25 +18,31 @@ var writeLosses = document.getElementById("loss-count");
 
 // Starting guess count
 var guessesLeft = 9;
-// Variable to write guess updates to page
+
+// Variable to write remaining guess count to page
 var writeGuessesLeft = document.getElementById("guess-count");
 
-var writeGuesses = document.getElementById("letters-guessed");
-
-// Variable to write quote to page
+// Variable to write loss quote to page
 var writeLossQuote = document.getElementById("psychic-quote");
 var lossQuote = "&#8220;The ego of a god, the wit of a goldfish.&#8221;";
+var lossQuoteSource = "Shah Wharton";
+
+// Variable to write starting quote to page
 var writeResetQuote = document.getElementById("psychic-quote");
-var resetQuote = "&#8220;How many people here have telekinetic power? Raise my hand&#8221;";
+var resetQuote = "&#8220;How many people here have telekinetic power? R[a]ise my hand&#8221;";
+var resetQuoteSource = "Emo Philips";
+
+// Variable to write win quote to page
 var writeWinQuote = document.getElementById("psychic-quote");
 var winQuote = "&#8220;Claircognizance is the ability to know without trying.&#8221;";
-
-var createPlayButton = document.getElementById("button-play");
+var winQuoteSource = "Lada Ray";
 
 // Current user guess based on key press
 var userGuess = null;
-// Blank array to insert user guesses in
+// Blank array to insert user guesses into
 var userGuesses = [];
+// Variable to write letters guessed to page
+var writeGuesses = document.getElementById("letters-guessed");
 
 //---------------------------------------------------------------------------
 // FUNCTION DECLARATIONS!
@@ -46,26 +52,27 @@ function computerGuess () {
 	currentLetter = computerOptions[Math.floor(Math.random() * computerOptions.length)];
 }
 
-// This function will allow the starting guess count
+// This function will show the starting guess count
 function guessesAtStart () {
 	guessesLeft = 9;
 	writeGuessesLeft.innerHTML = "<h2> You have " + guessesLeft + " guesses remaining.</h2>";
 }
 
-// This function writes new guess count to page
+// This function writes remaining guess count to page
 function writeNewGuessCount () {
 	writeGuessesLeft.innerHTML = "<h2> You have " + guessesLeft + " guesses remaining.</h2>";
 }
 
+// This function takes key press, pushes to blank array, then writes to page
 function writeGuessedLetters () {
 	userGuesses.push(userGuess);
 	writeGuesses.innerHTML = "<h2>" + (userGuesses.join(" ")) + "</h2>";
 }
 
+// This function resets the userGuess array on page to be blank
 function resetGuessedLetters () {
 	writeGuesses.innerHTML = "<h2> </h2>";
 }
-
 
 // This function writes new win count to page
 function writeNewWinCount () {
@@ -77,23 +84,25 @@ function writeNewLossCount () {
 	writeLosses.innerHTML = "<h2>Losses: " + losses + "</h2>";
 }
 
+// This function shows a loss quote after player loses (this quote will
+// stick around until they win or reset the game)
 function showLossQuote () {
-	writeLossQuote.innerHTML = "<p>" + lossQuote + "</p>";
+	writeLossQuote.innerHTML = "<p>" + lossQuote + '</p> <footer class="blockquote-footer">' + lossQuoteSource + "</footer>";
 }
 
+// This function shows the starting quote on opening the page or when
+// the player resets the game with the "Start Over!" button
 function showResetQuote () {
-	writeResetQuote.innerHTML = "<p>" + resetQuote + "</p>";
+	writeResetQuote.innerHTML = "<p>" + resetQuote + '</p> <footer class="blockquote-footer">' + resetQuoteSource + "</footer>";
 }
 
+// This function shows a win quote after player loses (this quote will
+// stick around until they lose or reset the game)
 function showWinQuote () {
-	writeWinQuote.innerHTML = "<p>" + winQuote + "</p>";
+	writeWinQuote.innerHTML = "<p>" + winQuote + '</p> <footer class="blockquote-footer">' + winQuoteSource + "</footer>";
 }
 
-function showPlayAgain () {
-	createPlayButton.innerHTML = '<button type="button" onclick="resetGame()" class="btn btn-default">Play Again!</button>';
-}
-
-// Starts game on page load
+// This function starts game on page load
 function gameStart () {
 	wins = 0;
 	writeWins.innerHTML = "<h2>Wins: " + wins + "</h2>";
@@ -103,23 +112,25 @@ function gameStart () {
 	showResetQuote();
 	computerGuess();
 	resetGuessedLetters();
+	// Console logs computer letter choice for testing
 	console.log(currentLetter);
 }
 
 // This function will start the guess counts over on game win/loss condition
+// Win/Loss Quote will show from previous round.
 function resetGame() {
 	guessesAtStart();
 	computerGuess();
+	// Console logs computer letter choice for testing
 	console.log(currentLetter);
 	userGuesses = [];
 	resetGuessedLetters();
-	showResetQuote();
 }
 
 //---------------------------------------------------------------------------
 // ACTUAL GAME BITS!
 
-// Starts new game on page load
+// Starts new game on page load or refresh
 gameStart();
 
 // Once user presses a key
@@ -131,29 +142,30 @@ document.onkeyup = function() {
 	writeNewGuessCount();
 	// Console logs key press for testing
 	console.log(userGuess);
+	// Shows list of letters guessed
 	writeGuessedLetters();
+	// Console logs guess array for testing
 	console.log(userGuesses);
 
-	// While there are still guesses left
+	// If there are still guesses left and player guesses correct letter,
+	// player wins and guess count resets to 9.
 	if (guessesLeft > 0) {
 		if (userGuess === currentLetter) {
-		alert("You've done it! Press Play Again to Keep Playing!");
+		alert("You've done it!");
 		wins++;
 		writeNewWinCount();
 		showWinQuote();
-		showPlayAgain();
 		userGuesses = [];
 		writeGuessedLetters();
-		// Currently using button -- may change this.
-		// resetGame();
+		resetGame();
 	}
 }
+	// If there are no guesses left, player loses and guess count resets to 9.
 	else if (guessesLeft === 0) {
 		losses++;
 		writeNewLossCount();
 		showLossQuote();
-		alert("Oh No! Bad Luck. Press Play Again to Keep Playing!");
-		// Currently using button -- may change this.
-		// resetGame();
+		alert("Oh No! Bad Luck.");
+		resetGame();
 	}
 }

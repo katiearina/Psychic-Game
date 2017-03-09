@@ -1,7 +1,9 @@
+/* Ridiculous neon psychic sign background :3 */
 body {
 	background-image: url("../images/psychic-reader-small.jpg");
 }
 
+/* For footer positioning and to get rid of weird L-R scroll bar */
 html, body {
 	height: 100%;
 	overflow-x: hidden;
@@ -17,9 +19,10 @@ html, body {
 	padding: 0px 0px 30px 0px;
 }
 
-/* Set the fixed height of the footer here */
+/* Sticky footer styling! */
 #footer {
 	/* Must match margin-bottom in .wrapper CSS */
+	/* Set the fixed height of the footer here */
 	height: 30px;
 	color: lightsalmon;
 	background-color: black;
@@ -30,12 +33,14 @@ html, body {
 	overflow: auto;
 }
 
+/* Sticky Footer Text Styling */
 .p-footer-main {
 	font-size: 12px;
 	font-weight: bold;
 	margin: 5px 0px 0px 0px;
 }
 
+/* Top Content/Header(ish) Styling */
 .top-content {
 	top: 0px;
 	color: lightsalmon;
@@ -47,6 +52,7 @@ html, body {
 	text-align: center;
 }
 
+/* Main Content Box(es) Styling */
 .main-psychic-content, .right-content, .bottom-content {
 	background-color: #ffffff;
 	border-style: solid;
@@ -57,35 +63,45 @@ html, body {
 	padding: 20px;
 }
 
-#book-title, #book-quote {
-	margin: 100px 0px 0px 0px;
-}
-
+/* Specific settings for main content height */
 .right-content, .main-psychic-content {
 	min-height: 500px;
 }
 
+/* H1 Styling (for header/top content) */
 h1 {
 	font-weight: bold;
 }
 
+/* H4 Styling (for letter guess box title) */
 h4 {
 	text-decoration: underline;
 }
 
+/* Styling on letters guessed array */
 #letters-guessed {
 	padding: 0px 20px 0px 20px;
 	text-align: center;
 }
 
+/* Styling for counts */
 #guess-count, #win-count, #loss-count {
 	text-align: left;
 }
 
+/* Styling for button to restart game */
 #button-start {
-	float: left;
+	margin-top: 150px;
+	background-color: royalblue;
+	border-style: solid;
+	border-width: 1px;
+	border-color: red;
+	color: white;
+	font-weight: bold;
 }
 
-#button-play {
-	float-right;
+/* Styling for restart game button on hover */
+#button-start:hover {
+	background-color: lightsalmon;
+	color: red;
 }
